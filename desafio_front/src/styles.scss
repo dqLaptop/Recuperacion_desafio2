@@ -1,0 +1,196 @@
+@use "sass:map";
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+@import "/src/css/modal", "/src/css/cardInfoUsuario","/src/css/informacion","/src/css/botonesPruebas";
+
+@font-face {
+    font-family: "Fmon";
+    src: url("./assets/fuentes/Montserrat-Light.ttf");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "Fpop";
+    src: url("./assets/fuentes/Poppins-Light.ttf");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+$temaClaro: (
+    "colorPrimario": #F6F0E3,
+    "colorSecundario": #F4E0A3,
+    "colorTerciario": #E7766B,
+    "colorCuaternario": #9A9176,
+    "colorQuinario": #5A889B
+);
+
+$temaOscuro: (
+    "colorPrimario": #2D2D2F,
+    "colorSecundario": #09536F,
+    "colorTerciario": #6D583D,
+    "colorCuaternario": #ABC1A8,
+    "colorQuinario": #C35530
+);
+
+body {
+    font-family: "Fpop";
+    color: map.get($temaOscuro, "colorCuaternario");
+
+    .bienvenida, .ayuda,
+    .acercaDe, .contacto {
+        padding-top: 10em;
+    }
+    #cabecera{
+        background-image: linear-gradient(to left, map.get($temaOscuro, "colorSecundario"), map.get($temaOscuro, "colorPrimario") ,map.get($temaOscuro, "colorSecundario"), map.get($temaOscuro, "colorPrimario")) ;
+        border-radius: 10px;
+    }
+    #subcabecera{
+        background-color: map.get($temaOscuro, "colorPrimario");
+        border-radius: 10px;
+
+    }
+    #botonPerfil,
+    #botonLogout,
+    #guia{
+        border-radius: 10px;
+        background-color: map.get($temaOscuro, "colorCuaternario");
+        border-color: map.get($temaOscuro, "colorPrimario");
+        transition: transform 0, 3s;
+    }
+    #botonPerfil:hover,
+    #botonLogout:hover,
+    #guia:hover{
+        transform: translateY(-10px);
+        background-color: map.get($temaOscuro, "colorTerciario");
+        border-color: map.get($temaOscuro, "colorTerciario");
+        color: map.get($temaOscuro, "colorCuaternario");
+        border-radius: 10px;
+    }
+    .migas {
+        ul.breadcrumb {
+            list-style: none;
+        }
+
+        ul.breadcrumb li {
+            display: inline;
+            font-family: Fpop;
+            color: map.get($temaOscuro, "colorCuaternario")
+        }
+
+        ul.breadcrumb li+li:before {
+            color: map.get($temaClaro, "colorQuinario");
+            content: "/\00a0";
+        }
+
+        ul.breadcrumb li a {
+            color: map.get($temaClaro, "colorQuinario");
+            text-decoration: none;
+        }
+
+        ul.breadcrumb li a:hover {
+            color: map.get($temaOscuro, "colorCuaternario");
+            text-decoration: underline;
+        }
+    }
+
+    .centralBotones,
+    .centralTitulo,
+    .centralTexto {
+        height: 15vh;
+        text-align: center;
+    }
+
+    .inferior {
+        height: 18vh;
+    }
+
+    .aparecer {
+        display: block;
+    }
+
+    .desaparecer {
+        display: none;
+        visibility: hidden;
+    }
+    table{
+        & .contenido{
+            color: map.get($temaOscuro, "colorCuaternario");
+        }
+    }
+    
+    .icono {
+        height: 38px;
+    }
+
+    .paqueteRrss {
+        background-color: map.get($temaOscuro, "colorCuaternario");
+        border-radius: 10px;
+        transition: transform 0.5s;
+
+        .rrss {
+            transition: transform 0.5s;
+
+        }
+        .rrss:hover {
+            transform: rotate(45deg) skewX(15deg) scale(1.2);
+
+        }
+    }
+
+    .paqueteRrss:hover {
+        transform: scale(1.5);
+    }
+    
+    .tituloBounce {
+        
+        animation: bounce 4s 1;
+
+    }
+    @keyframes bounce {
+        0% {
+            transform: translateY(0) scale(1);
+        }
+        30% {
+            transform: translateY(-50px) scale(1.20);
+        }
+        45% {
+            transform: translateY(0) scale(1.10);
+        }
+        55% {
+          transform: translateY(-25px) scale(1.20);
+        }
+        64% {
+            transform: translateY(0) scale(1.10);
+        }
+        72% {
+            transform: translateY(-15px) scale(1.20);
+        }
+        78% {
+            transform: translateY(0) scale(1.10);
+        }
+        83% {
+            transform: translateY(-10px) scale(1.20);
+        }
+        88% {
+          transform: translateY(0) scale(1.10);
+        }
+        93% {
+            transform: translateY(-5px) scale(1.20);
+        }
+        100% {
+          transform: translateY(0) scale(1);
+        }
+    }
+
+
+
+    @include modalLogin($temaOscuro);
+    @include modalRegister($temaOscuro);
+    @include infoUsuario($temaOscuro);
+    @include modalPrueba($temaOscuro);
+    @include cardPruebas($temaOscuro);
+    @include buttonPruebas($temaOscuro);
+    @include info($temaOscuro);
+}

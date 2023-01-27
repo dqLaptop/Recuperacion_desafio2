@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo - Hermes</title>
+</head>
+
+<body class="bg-image" style="background-image:url(../assets/img/fondo.jpg);">
+    <!--
+ Contenido
+-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-1">
+                <div class="row" id="cabecera">
+                    <div class="col-2">
+                        <img id="logo" src="/src/assets/img/logo.png" width="100px" height="100px">
+                    </div>
+                    <div class="col-8">
+                        <h1 class="p-4">Olimpo - Comunicación Hermes</h1>
+                    </div>
+                    <div class="col-1">
+                        <div class="botonPerfil pt-3">
+                            <button class="btnCabecera" id="botonPerfil">Perfil</button>
+                        </div>
+                        <div class="botonLogout pt-3">
+                            <button class="btnCabecera" id="botonLogout">Logout</button>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="dropdown">
+                            <img src="/src/assets/img/Afrodita.png" class="pt-1" alt="Avatar de usuario" width="80"
+                                height="120">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="subcabecera">
+            <div class="col-8 p-3 border-bottom">
+                <div class="migas">
+                    <ul class="breadcrumb">
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="IndexPersonaje.html">Panel de Gestión</a></li>
+                        <li>Comunicación Hermes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4 p-3 border-bottom">
+                <div class="row">
+                    <div class="col-6" id="personajeRol"></div>
+                    <div class="col-6"><button class="btn" id="guia" data-bs-toggle="modal"
+                            data-bs-target="#modalGuia">Guía</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container pb-4">
+        <div class="row">
+            <div class="col-12 p-4">
+                <h2>Mensajes</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label for="comunicacion">Filtrar:</label>
+                <select id="comunicacion">
+                    <option value="todos">Todos</option>
+                    <option value="noLeidos">No Leídos</option>
+                    <option value="leidos">Leídos</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="busqueda">Obtener mensajes recibidos de un usuario concreto:</label>
+                <div class="row">
+                    <div class="col p-3" id="buscador">
+                        <label for="emailU">Email del usuario:</label>
+                        <input id="emailU" type="email" name="emailU" class="m-2"
+                            pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+                            placeholder="Ex: ana@gmail.com">
+                        <button id="buscarComentario" type="button" class="btn btn-primary">Buscar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container p-4">
+        <div class="row">
+            <div class="col">
+                <button id="crearMensaje" type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                    data-bs-target="#modalMensaje">Crear mensaje nuevo</button>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="tablaMensaje"></div>
+    <div class="container">
+        <div class="row inferior">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <footer class="inferior py-3 my-3">
+                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                        <li class="nav-item"><a href="/index.html" target="_blank"
+                                class="nav-link px-2 text-muted">Inicio</a></li>
+                        <li class="nav-item"><a href="./Ayuda.html" target="_blank"
+                                class="nav-link px-2 text-muted">Ayuda</a>
+                        </li>
+                        <li class="nav-item"><a href="./acercaDe.html" target="_blank"
+                                class="nav-link px-2 text-muted">Acerca de
+                                nosotros</a></li>
+                        <li class="nav-item"><a href="./Contacto.html" target="_blank"
+                                class="nav-link px-2 text-muted">Contacto</a></li>
+                    </ul>
+                    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+                </footer>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalMensaje" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Enviar Comentario</h5>
+                    <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalContenido">
+                    <div id="tablaUsuarios"></div>
+                    <form id="formHermes">
+                        <div class="container pt-3">
+                            <label>¿Quieres enviarlo a todos los componentes del Olimpo?</label><br>
+                            <input type="radio" class="m-1" value="si" name="respuesta">
+                            <label class="m-1" for="respuesta">Si</label>
+                            <input type="radio" class="m-1" value="no" name="respuesta">
+                            <label class="m-1" for="respuesta">No</label>
+                        </div>
+                        <div id="eleccionEmail" class="container pt-3 desaparecer">
+                            <label for="dirigido">¿Quien quieres que reciba este mensaje?</label><br>
+                            <label for="emailR">Email del usuario al que se lo va enviar:</label>
+                            <div class="container pt-1" id="contenedorEmail">
+                                <input type="email" name="emailR" class="form-control mt-1 emailR"
+                                    pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+                                    placeholder="Ex: pedro@gmail.com">
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <button id="addEmail" type="button" class="btn btn-primary mt-3">Añadir Email</button>
+                            <button id="eliminarEmail" type="button" class="btn btn-primary mt-3">Eliminar
+                                Email</button>
+                        </div>
+                        <div class="container pt-3">
+                            <label for="asunto">Asunto:</label>
+                            <input name="asunto" class="form-control m-1" id="motivo" required>
+                            <label for="mensaje">Mensaje:</label>
+                            <textarea name="mensaje" class="form-control m-1" id="mensaje" required></textarea>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cerrar" data-bs-dismiss="modal">Close</button>
+                    <button id="enviar" type="submit" class="btn btn-primary desaparecer">Enviar</button>
+                    <button id="enviarTodos" type="submit" class="btn btn-primary aparecer">Enviar a todos</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalVerComentario" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Comentario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="email" class="pb-2">Usuario que te manda el mensaje:</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control m-2" disabled>
+                    <input type="text" name="email" id="email" class="form-control m-2" disabled>
+                    <label for="asunto" class="pt-2 pb-2">Asunto:</label>
+                    <input class="form-control m-1" id="asunto" name="asunto" disabled>
+                    <label class="pt-2 pb-2" for="mensaje">Mensaje:</label>
+                    <textarea class="form-control m-1" id="comentario" name="mensaje" disabled></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalGuia" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Guía rápida</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bienvenid@, si has acabado aquí te estarás preguntando lo siguiente: ¿Qué tengo que hacer
+                        ahora? o ¿Qué hace cada apartado?<br> El sistema de correo Hermes tiene la opcion de enviar Correos,
+                        una vez que pinches ese botón
+                        te sacara otra pantalla donde podrás ver una tabla con todos los usuarios y sus correos, tienes
+                        la opción de enviarlo a todos los usuarios del olimpo o bien enviarlo a uno o varios usuarios
+                        introducciendo su correo.<br>Tambien tienes la opcion de ver tus mensajes pulsando ver
+                        comentario que se situa en cada fila o bien eliminarlo.<br>
+                        Por ultimo tienes la opcion de filtrar tus mensajes por leidos, no leidos y todos, asi como
+                        filtrar por el email de un usuario que te haya escrito</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn transition" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

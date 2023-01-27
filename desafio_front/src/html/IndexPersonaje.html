@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo - Interface</title>
+</head>
+
+<body class="bg-image" style="background-image:url(../assets/img/fondo.jpg);">
+    <!--
+ Contenido
+-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-1">
+                <div class="row" id="cabecera">
+                    <div class="col-2">
+                        <img id="logo" src="/src/assets/img/logo.png" width="100" height="100">
+                    </div>
+                    <div class="col-8">
+                        <h1 class="p-4">Olimpo - Interface de usuario</h1>
+                    </div>
+                    <div class="col-1">
+                        <div class="botonPerfil pt-3">
+                            <button class="btnCabecera" id="botonPerfil">Perfil</button>
+                        </div>
+                        <div class="botonLogout pt-3">
+                            <button class="btnCabecera" id="botonLogout">Logout</button>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="dropdown">
+                            <img src="/src/assets/img/Afrodita.png" class="pt-1" alt="Avatar de usuario" width="80"
+                                height="120">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="subcabecera" class="row">
+            <div class="col-8 p-3 border-bottom">
+                <div class="migas">
+                    <ul class="breadcrumb">
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li>Panel de gestión</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4 p-3 border-bottom">
+                <div class="row">
+                    <div class="col-6" id="personajeRol"></div>
+                    <div class="col-6"><button class="btn" id="guia" data-bs-toggle="modal"
+                            data-bs-target="#modalGuia">Guía</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-7 p-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card tarjetaPrueba">
+                            <div class="card-body ">
+                                <h5 class="card-title border-bottom">Pruebas</h5>
+                                <p class="card-text">Accede a la Gestión de Pruebas. Pulsa en el botón pruebas
+                                </p>
+                                <button class="btn transition" id="botonPruebas">Pruebas</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row aparecer" id="tarjetaConsulta">
+                    <div class="col-12 mt-2 pt-4">
+                        <div class="card tarjetaPrueba">
+                            <div class="card-body">
+                                <h5 class="card-title border-bottom">Gestión de humanos</h5>
+                                <p class="card-text">Gestiona a los humanos del Olimpo. Pulsa en el botón consulta
+                                </p>
+                                <button class="btn transition" id="botonConsulta">Consulta</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-2 pt-4">
+                        <div class="card tarjetaPrueba">
+                            <div class="card-body">
+                                <h4 class="card-title mt-1 p-3 border-bottom">Comunicación HERMES</h4>
+                                <p class="card-text p-3">¿Quieres comunicarte con tus amigos y tus dioses en el
+                                    Olimpo?<br>
+                                    Utiliza nuestro sistema de comunicación HERMES.<br>
+                                    Pulsa el botón para iniciar la comunicación</p>
+                                <button class="btn transition" id="btnHermes">Hermes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-12 p-4">
+                        <div class="card cardUsuario text-start">
+                            <div class="card-header cardHeaderInfo pb-0"></div>
+                            <div class="card-body cardBodyInfo">
+                                <h5>Atributos:</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row inferior">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <footer class="inferior py-3 my-3">
+                        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                            <li class="nav-item"><a href="/index.html" target="_blank"
+                                    class="nav-link px-2 text-muted">Inicio</a></li>
+                            <li class="nav-item"><a href="./Ayuda.html" target="_blank"
+                                    class="nav-link px-2 text-muted">Ayuda</a>
+                            </li>
+                            <li class="nav-item"><a href="./acercaDe.html" target="_blank"
+                                    class="nav-link px-2 text-muted">Acerca de
+                                    nosotros</a></li>
+                            <li class="nav-item"><a href="./Contacto.html" target="_blank"
+                                    class="nav-link px-2 text-muted">Contacto</a></li>
+                        </ul>
+                        <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+                    </footer>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modalGuia" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content modalGuia">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Guía rápida</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Bienvenid@, si has acabado aquí te estarás preguntando lo siguiente: ¿Qué tengo que hacer
+                            ahora? o ¿Qué hace cada apartado?<br>En primer lugar dependiendo de tu personaje en el
+                            olimpo tendrás diferentes opciones,podrás
+                            ver que personaje eres al lado de este botón<br>-Si eres humano podras acceder a pruebas,
+                            en el que podrás ver que pruebas te han enviado los
+                            dioses y resolverlas.<br>
+                            -Si eres dios podrás acceder a pruebas, donde podras crearlas,asignarlas a tus humanos,
+                            modificarlas y eliminarlas, también tendrás el apartado de consultas
+                            donde podras cambiar los atributos de los humanos, crear humanos.<br>-Y por último si eres
+                            hades tendras la misma funcionalidad que los dioses pero en consultas podrás
+                            eliminar a los humanos.<br>En cuanto a Hermes pueden acceder todos los usuarios y se puede
+                            ver
+                            los comentarios que te
+                            han enviado, asi como tú puedes enviarles comentarios a tus compañeros del olimpo</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn transition" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>

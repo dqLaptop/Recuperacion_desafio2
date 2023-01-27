@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo - Pruebas</title>
+</head>
+
+<body class="bg-image" style="background-image:url(../assets/img/fondo.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-1">
+                <div class="row" id="cabecera">
+                    <div class="col-2">
+                        <img id="logo" src="/src/assets/img/logo.png" width="100" height="100">
+                    </div>
+                    <div class="col-8">
+                        <h1 class="p-4">Olimpo - Pruebas</h1>
+                    </div>
+                    <div class="col-1">
+                        <div class="botonPerfil pt-3">
+                            <button class="btnCabecera" id="botonPerfil">Perfil</button>
+                        </div>
+                        <div class="botonLogout pt-3">
+                            <button class="btnCabecera" id="botonLogout">Logout</button>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="dropdown">
+                            <img src="/src/assets/img/Afrodita.png" class="pt-1" alt="Avatar de usuario" width="80"
+                                height="120">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="subcabecera" class="row">
+            <div class="col-8 p-3 border-bottom">
+                <div class="migas">
+                    <ul class="breadcrumb">
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="IndexPersonaje.html">Panel de Gestión</a></li>
+                        <li>Pruebas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4 p-3 border-bottom">
+                <div class="row">
+                    <div class="col-6" id="personajeRol"></div>
+                    <div class="col-6"><button class="btn" id="guia" data-bs-toggle="modal"
+                            data-bs-target="#modalGuia">Guía</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-4">
+                <h3>Creación de pruebas</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button id="eleccion" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalPrueba">Añadir
+                    prueba Elección</button>
+            </div>
+            <div class="col-3">
+                <button id="valoracion" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalPrueba">Añadir
+                    prueba Valoración</button>
+            </div>
+            <div class="col-3">
+                <button id="respuesta_libre" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalPrueba">Añadir
+                    prueba Respuesta Libre</button>
+            </div>
+            <div class="col-3">
+                <button id="puntual" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalPrueba">Añadir
+                    prueba Puntual</button>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-5 mt-5" id="respModal"></div>
+    <div class="container" id="tabla"></div>
+    <div class="container">
+        <div class="row inferior">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <footer class="inferior py-3 my-3">
+                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                        <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Inicio</a></li>
+                        <li class="nav-item"><a href="./Ayuda.html" class="nav-link px-2 text-muted">Ayuda</a>
+                        </li>
+                        <li class="nav-item"><a href="./acercaDe.html" class="nav-link px-2 text-muted">Acerca de
+                                nosotros</a></li>
+                        <li class="nav-item"><a href="./Contacto.html" class="nav-link px-2 text-muted">Contacto</a>
+                        </li>
+                    </ul>
+                    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+                </footer>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalPrueba" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalP">
+                <div class="modal-header">
+                    <h5 class="modal-title">Maquinando prueba</h5>
+                    <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formPrueba" novalidate>
+                        <label class="pb-2" for="descripcion">Pregunta:</label>
+                        <textarea class="form-control m-1" id="descripcion" placeholder="Escribe tu pregunta o prueba"
+                            name="descripcion" required></textarea>
+                        <label class="pt-2 pb-2" for="destino">Destino:</label>
+                        <input required type="number" max="100" min="1" class="form-control col-3 m-1" name="destino"
+                            placeholder="De 1 a 100" id="destino">
+                        <label class="pt-2 pb-2 atributo desaparecer">Atributo:</label>
+                        <input type="text" class="form-control col-3 m-1 desaparecer" id="atributo" name="atributo"
+                            pattern="[sabiduria,astucia,maldad,virtud,nobleza]+" placeholder="Ejemplo: nobleza">
+                        <label class="pt-2 pb-2 dificultad desaparecer">Dificultad:</label>
+                        <input type="number" max="100" min="1" class="form-control col-3 m-1 desaparecer"
+                            name="dificultad" id="dificultad" placeholder="De 1 a 100">
+                        <label class="pt-2 pb-2 desaparecer valorA">Valor de la respuesta:</label>
+                        <input type="number" max="1" min="0" class="form-control col-3 m-1 desaparecer" name="valorA"
+                            id="valorA" placeholder="De 0 a 1">
+                        <label class="pt-2 pb-2 palabras desaparecer">Palabras clave:</label>
+                        <textarea class="form-control col-12 m-1 desaparecer" placeholder="Escribe las palabras clave"
+                            name="palabras" id="palabras"></textarea>
+                        <label class="pt-2 pb-2 acierto desaparecer">Porcentaje de acierto:</label>
+                        <input type="number" max="100" min="0" class="form-control col-3 m-1 desaparecer" name="acierto"
+                            id="porcentaje" placeholder="De 0 a 100">
+                        <button type="button" class="btn mt-3 w-100 save">Aceptar</button>
+                        <button type="button" class="btn mt-3 w-100 aparecer guardar">Guardar</button>
+                        <button type="button" class="btn mt-3 w-100 cerrar" data-bs-dismiss="modal">Cerrar</button>
+                        <div class="mt-4 mb-3" id="respuestaModal"></div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="modalGuia" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Guía rápida</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bienvenid@, si has acabado aquí te estarás preguntando lo siguiente: ¿Qué tengo que hacer
+                        ahora? o ¿Qué hace cada apartado?<br>En primer lugar dependiendo de tu personaje en el
+                        olimpo tendrás diferentes opciones,podrás
+                        ver que personaje eres al lado de este botón<br>-Si tu personaje es un humano podrás resolver
+                        las pruebas que te hayan asignado los dioses pulsando en el botón de resolver que veras en cada
+                        una de las filas de la tabla así como filtrar tus pruebas por realizadas o no.<br>
+                        -Si tu personaje es un dios o hades tienes la
+                        opcion de crear diferentes tipos de pruebas las cuales una vez creadas se añaden a la tabla, por
+                        otra parte en cada una de las filas podras ver un botón de modificar que te permite cambiar
+                        algún parametro de la prueba, un boton de asignar el cual te asociar esa prueba con un humano o
+                        varios los cuales no la tengan,
+                        o si lo prefieres puedes asignar dicha prueba a todos los humanos y por último podras eliminar
+                        dicha prueba.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn transition" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="modalAsignacion" tabindex="-1">
+        <div class="modal-dialog  modal-fullscreen">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Asignación de pruebas</h5>
+                    <button type="button" class="btn-close cierre" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="tablaUsu"></div>
+                    <div class="container" id="resp"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn mt-3 w-100 btn-primary Asignar ">Asignar</button>
+                    <button type="button" class="btn mt-3 w-100 btn-danger cierre" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

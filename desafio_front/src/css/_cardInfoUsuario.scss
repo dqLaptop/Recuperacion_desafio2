@@ -1,0 +1,98 @@
+@mixin infoUsuario($tema) {
+
+
+   .cardUsuario {
+      background: linear-gradient(to bottom right,
+            map.get($tema, "colorTerciario"), map.get($tema, "colorTerciario"), map.get($tema, "colorPrimario"),
+            map.get($tema, "colorTerciario"), map.get($tema, "colorTerciario"));
+      position: relative;
+      animation: entradaIzq 2s;
+
+   }
+
+   .btnAtrib,
+   .btnCabecera,
+   .btnHermes {
+      color: map.get($tema, "colorQuinario");
+      background-color: map.get($tema, "colorSecundario");
+      transition: 1s;
+   }
+
+   .btnAtrib:hover,
+   .btnHermes:hover {
+      background-color: map.get($tema, "colorQuinario");
+      color: map.get($tema, "colorSecundario");
+      box-shadow: 0 0 50px map.get($tema, "colorQuinario");
+      transition-delay: 0.3s;
+   }
+
+   .progress {
+      height: 12px;
+      margin-bottom: 8px;
+   }
+
+   .progress-bar {
+      background-color: map.get($tema, "colorPrimario");
+   }
+
+}
+
+@mixin cardPruebas($tema) {
+
+   .tarjetaPrueba {
+      background: linear-gradient(to bottom right,
+            map.get($tema, "colorPrimario"),
+            map.get($tema, "colorTerciario"));
+      position: relative;
+      animation: entradaIzq 2s;
+
+      .card-body p,
+      .card-body h5 {
+         animation-duration: 2s;
+         animation-name: animTexto;
+         margin: 20px;
+      }
+   }
+
+   @keyframes animTexto {
+      from {
+         margin-left: 200%;
+         width: 200%;
+      }
+
+      to {
+         margin-left: 0%;
+         width: 100%;
+      }
+   }
+
+   @keyframes entradaIzq {
+      from {
+         left: -100%;
+         transform: skewX(10deg);
+      }
+
+      to {
+         left: 0%;
+      }
+
+   }
+
+   button.transition {
+      width: 100px;
+      height: 50px;
+      color: map.get($tema, "colorQuinario");
+      background-color: map.get($tema, "colorSecundario");
+      border-color: map.get($tema, "colorSecundario");
+      transition: width 2s, height 2s, margin 2s;
+      margin: 15px auto 0;
+   }
+
+   .transition:hover {
+      background-color: map.get($tema, "colorSecundario");
+      border-color: map.get($tema, "colorSecundario");
+      width: 100%;
+      height: 60px;
+      margin: 0 auto;
+   }
+}

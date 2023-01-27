@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo - Consulta</title>
+</head>
+
+<body class="bg-image" style="background-image:url(../assets/img/fondo.jpg);">
+    <!--
+ Contenido
+-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-1">
+                <div class="row" id="cabecera">
+                    <div class="col-2">
+                        <img id="logo" src="/src/assets/img/logo.png" width="100" height="100">
+                    </div>
+                    <div class="col-8">
+                        <h1 class="p-4">Olimpo - Consulta</h1>
+                    </div>
+                    <div class="col-1">
+                        <div class="botonPerfil pt-3">
+                            <button class="btnCabecera" id="botonPerfil">Perfil</button>
+                        </div>
+                        <div class="botonLogout pt-3">
+                            <button class="btnCabecera" id="botonLogout">Logout</button>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="dropdown">
+                            <img src="/src/assets/img/Afrodita.png" class="pt-1" alt="Avatar de usuario" width="80px"
+                                height="120px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="subcabecera" class="row">
+            <div class="col-8 p-3 border-bottom">
+                <div class="migas">
+                    <ul class="breadcrumb">
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="IndexPersonaje.html">Panel de Gestión</a></li>
+                        <li>Consulta</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4 p-3 border-bottom">
+                <div class="row">
+                    <div class="col-6" id="personajeRol"></div>
+                    <div class="col-6"><button class="btn" id="guia" data-bs-toggle="modal"
+                            data-bs-target="#modalGuia">Guía</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divContainer" class="container mt-4"><!--Se pone este estilo aqui porque no coge la foto-->
+        <div class="row">
+            <div class="col-12 pb-5 pt-5">
+                <h3>Gestión de Humanos y Dioses</h3>
+            </div>
+        </div>
+        <div class="row pb-5 pt-3 border-bottom">
+            <div class="col-3 text-center">
+                <button id="addMasivo" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalAddMasivos">Añadir Humanos Masivo</button>
+            </div>
+            <div class="col-3 text-center">
+                <button id="addHumano" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalAddHumano">Añadir humano</button>
+            </div>
+            <div class="col-3 text-center">
+                <button id="addD" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalAddDios">Añadir Dios</button>
+            </div>
+            <div id="divEliminarMasivo" class="col-3 desaparecer text-center">
+                <button id="eliminarMasivo" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalEliminarMasivo">Eliminar Masivo</button>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-3 mb-3" id="alert"></div>
+    <div class="container pt-5 mb-5 text-center">
+        <div class="row">
+            <div class="col-6">
+                <h2><u>Usuarios</u></h2>
+            </div>
+            <div class="col-6">
+                <label for="usuariosOlimpo">Filtrar:</label>
+                <select id="usuariosOlimpo">
+                    <option value="todos">Todos</option>
+                    <option value="vivos">Vivos</option>
+                    <option value="tartaro">Tartaro</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5" id="tablaUsuarios"></div>
+    <div class="container">
+        <div class="row inferior">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <footer class="inferior py-3 my-3">
+                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                        <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Inicio</a>
+                        </li>
+                        <li class="nav-item"><a href="./Ayuda.html" class="nav-link px-2 text-muted">Ayuda</a>
+                        </li>
+                        <li class="nav-item"><a href="./acercaDe.html" class="nav-link px-2 text-muted">Acerca de
+                                nosotros</a></li>
+                        <li class="nav-item"><a href="./Contacto.html" class="nav-link px-2 text-muted">Contacto</a>
+                        </li>
+                    </ul>
+                    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+                </footer>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalGuia" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Guía rápida</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bienvenid@, si has acabado aquí te estarás preguntando lo siguiente: ¿Qué tengo que hacer
+                        ahora? o ¿Qué hace cada apartado?<br>En primer lugar dependiendo de tu personaje en el
+                        olimpo tendrás diferentes opciones,podrás
+                        ver que personaje eres al lado de este botón<br>-Si tu personaje es un dios tienes la
+                        opcion de crear humanos masivos que tras en el boton te lleva una pequeña
+                        pantalla donde te pide el numero de humanos que quieres crear, tambien puedes crear uno solo
+                        donde tendras que rellanar un formulario con los datos del humano al igual que si quieres
+                        crear
+                        un dios.<br>También tienes la opción de modificar los
+                        atributos de los humanos pinchando en el boton modificar que podras ver en cada una de las
+                        filas
+                        de la tabla y te saldra una pequeña pantalla con
+                        los atributos que ya tiene el humano, para modificarlos introduce un número del 1 al 5 en
+                        cada
+                        uno de los diferentes atributos y pincha en guardar.<br>
+                        <br>-Y si eres
+                        Hades tendras la misma funcionalidad que los dioses, pero podrás
+                        eliminar a los humanos.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn transition" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalAddMasivos" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Añadir Humanos Masivos</h5>
+                    <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formHumanoMasivo">
+                        <label class="form-label">¿Cuantos humanos quieres?</label>
+                        <input id="inputHM" name="numeroM" class="form-control" type="number" min="1" max="100"
+                            required>
+                        <span class="error col-1" aria-live="polite"></span>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="addM" type="button" class="btn btn-primary">Aceptar</button>
+                    <button type="button" class="btn cerrar" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalAddDios" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Añadir Dios</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formDios">
+                        <div class="form-group">
+                            <label for="nombre form-label">Nombre:</label>
+                            <input class="form-control mb-2 col-1" name="name" placeholder="Escribe su nombre"
+                                autocomplete="off" id="name" type="text" required pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+                                title="Solo letras" minlength="3" maxlength="30" autofocus />
+                            <span class="invalid-feedback col-1"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email form-label">Correo electronico:</label>
+                            <input class="form-control mb-2" name="emailDios" placeholder="Escribe su correo o email"
+                                id="emailDios" autocomplete="off" type="email" required
+                                pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+                                title="Introduce un email válido" />
+                            <span class="invalid-feedback col" aria-live="polite"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password form-label">Contraseña: </label>
+                            <input class="form-control mb-2" name="passwordDios" id="passwordDios" autocomplete="off"
+                                type="password" required pattern=".{6,}" title="Introduce una contraseña válida" />
+                            <span class="invalid-feedback col"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password form-label">¿Quieres que pueda borrar?</label>
+                            <input type="radio" class="m-1" value="si" name="borrado">
+                            <label class="m-1" for="respuesta">Si</label>
+                            <input type="radio" class="m-1" value="no" name="borrado">
+                            <label class="m-1" for="respuesta">No</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="addDios" type="button" class="btn btn-primary">Aceptar</button>
+                    <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalAddHumano" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Añadir Humano</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formHumano">
+                        <div class="form-group">
+                            <label for="nombre form-label">Nombre:</label>
+                            <input class="form-control mb-2 col-1" name="nombreHumano" placeholder="Escribe su nombre"
+                                autocomplete="off" id="nombreHumano" type="text" required
+                                pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Solo letras" minlength="3" maxlength="30"
+                                autofocus />
+                            <span class="invalid-feedback col-1"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email form-label">Correo electronico:</label>
+                            <input class="form-control mb-2" name="emailHumano" placeholder="Escribe su correo o email"
+                                id="emailHumano" autocomplete="off" type="email" required
+                                pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+                                title="Introduce un email válido" />
+                            <span class="invalid-feedback col" aria-live="polite"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password form-label">Contraseña: </label>
+                            <input class="form-control mb-2" name="passwordHumano" id="passwordHumano"
+                                autocomplete="off" type="password" required pattern=".{6,}"
+                                title="Introduce una contraseña válida" />
+                            <span class="invalid-feedback col"></span>
+                        </div>
+                        <label for="form-label">-Atributos del humano (recuerda maximo 5 y minimo 1):</label>
+                        <div class="form-group pt-2">
+                            <label for="sabiduria form-label">Sabiduria:</label>
+                            <input id="sabiduria" name="sabiduria" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for=" form-label">Nobleza:</label>
+                            <input id="nobleza" name="nobleza" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for="virtud form-label">Virtud:</label>
+                            <input id="virtud" name="virtud" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for="password form-label">Maldad:</label>
+                            <input id="maldad" name="maldad" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for="astucia form-label">Astucia:</label>
+                            <input id="astucia" name="astucia" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="addHumano" type="button" class="btn btn-primary">Aceptar</button>
+                    <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalAtributos" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modificar Atributos</h5>
+                    <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAtributos">
+                        <label for="form-label">-Atributos del humano (recuerda maximo 5 y minimo 1):</label>
+                        <div class="form-group pt-2">
+                            <label for="sabiduria form-label">Sabiduria:</label>
+                            <input id="sabiduriaMod" name="sabiduriaMod" class="form-control" type="number" min="1"
+                                max="5" required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for=" form-label">Nobleza:</label>
+                            <input id="noblezaMod" name="noblezaMod" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for="virtud form-label">Virtud:</label>
+                            <input id="virtudMod" name="virtudMod" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for="password form-label">Maldad:</label>
+                            <input id="maldadMod" name="maldadMod" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                            <label for="astucia form-label">Astucia:</label>
+                            <input id="astuciaMod" name="astuciaMod" class="form-control" type="number" min="1" max="5"
+                                required>
+                            <span class="error col-1" aria-live="polite"></span>
+                        </div>
+                        <div id="alertAtributos"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="addAtributos" type="button" class="btn btn-primary">Aceptar</button>
+                    <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalEliminarMasivo" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen"">
+        <div class=" modal-content modalGuia">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Humanos de forma Masiva</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEliminarMasivo">
+                    <h5><u>Humanos</u></h5>
+                    <div class="container" id="tablaEliminar"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="addAtributos" type="button" class="btn btn-primary">Aceptar</button>
+                <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

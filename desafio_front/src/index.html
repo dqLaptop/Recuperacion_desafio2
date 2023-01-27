@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo</title>
+</head>
+
+<body class="bg-image" style="background-image:url(./assets/img/fondo.jpg);">
+    <div class="container">
+
+        <div class="bienvenida">
+
+            <div class="row centralTitulo">
+                <div class="col"></div>
+                <div class="col-7">
+                    <h1 class="display-4">Bienvenido al Olimpo</h1>
+                </div>
+                <div class="col"></div>
+            </div>
+
+            <div class="row centralTexto">
+                <div class="col"></div>
+                <div class="col-8">
+                    <p class="lead">¿Te animas a pasar por las puertas del Olimpo? Si aún no estas
+                        en la lista de los invitados pulsa el botón de Registrar y si ya eres miembro,
+                        los dioses te aguardan a que te loguees pinchando en el botón de login</p>
+                </div>
+                <div class="col"></div>
+            </div>
+
+            <div class="row centralBotones align-items-end">
+                <div class="col-3"></div>
+
+                <div class="col-3 d-grid">
+                    <button type="button" class="btn btnLogin btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#modalLogin">Login</button>
+                </div>
+                <div class="col-3 d-grid">
+                    <button type="button" class="btn registro btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#modalRegister">Registro</button>
+                </div>
+
+                <div class="col-3"></div>
+            </div>
+
+        </div>
+        <div class="row separador">
+            <div class="col"></div>
+        </div>
+        <!--
+            Footer 
+        -->
+        <div class="row inferior fixed-bottom">
+            <div class="col-1"></div>
+            <div class="col w-100">
+                <footer class="py-3 my-3">
+                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                        <li class="nav-item"><a href="./index.html" class="nav-link px-2 text-muted">Inicio</a></li>
+                        <li class="nav-item"><a href="./html/Ayuda.html" class="nav-link px-2 text-muted">Ayuda</a></li>
+                        <li class="nav-item"><a href="./html/acercaDe.html" class="nav-link px-2 text-muted">Acerca de
+                                nosotros</a></li>
+                        <li class="nav-item"><a href="./html/Contacto.html"
+                                class="nav-link px-2 text-muted">Contacto</a></li>
+
+                    </ul>
+                    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+                </footer>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <!-- MODAL DE LOGIN -->
+        <div class="modal fade" id="modalLogin">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modalLogin">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="modalLoginLabel">Login</h5>
+                        <button type="button" class="btn-close btnCloseLogin" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Dirección email</label>
+                                <input class="form-control" type="email" id="emailLogin" required
+                                    pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+                                    title="Introduce un email válido">
+                                <span class="error col-1" aria-live="polite"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label mt-3" for="password">Password</label>
+                                <input class="form-control" type="password" id="passwordLogin" required minlength="6"
+                                    title="Introduce una contraseña válida">
+                                <span class="errorPass col-1" aria-live="polite"></span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer avisoFracaso justify-content-center">
+                        <a class="btnSubmit w-100" id="btnSubmit">Login</a>
+                        <div class="mensajeFracaso desaparecer">
+                            <p>Usuario no verificado o inexistente
+                                <span><a class="btnContinuarLogin" href="/index.html">Pulse para continuar</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+ Modal para el registro   
+-->
+        <div class="modal" id="modalRegister" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modalRegistro">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registro</h5>
+                        <button type="button" class="btn-close cerrar" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formulario">
+                            <div class="form-group">
+                                <label for="nombre form-label">Nombre:</label>
+                                <input class="form-control mb-2 col-1" name="nombre" placeholder="Escribe tu nombre"
+                                    autocomplete="off" id="nombre" type="text" required
+                                    pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" title="Solo letras" minlength="3"
+                                    maxlength="30" autofocus />
+                                <span class="invalid-feedback col-1"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email form-label">Correo electronico:</label>
+                                <input class="form-control mb-2" name="email" placeholder="Escribe tu correo o email"
+                                    id="email" autocomplete="off" type="email" required
+                                    pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+                                    title="Introduce un email válido" />
+                                <span class="invalid-feedback col" aria-live="polite"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="password form-label">Contraseña: </label>
+                                <input class="form-control mb-2" name="password" id="password" autocomplete="off"
+                                    type="password" required pattern=".{6,}" title="Introduce una contraseña válida" />
+                                <span class="invalid-feedback col"></span>
+                            </div>
+                            <button type="submit" class="btn mt-3 w-100 save">Aceptar</button>
+                            <button type="button" class="btn mt-3 w-100 cerrar" data-bs-dismiss="modal">Cerrar</button>
+                            <div class="desaparecer respuesta p-3">
+                                <p class="mensaje"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script> -->
+</body>
+
+</html>

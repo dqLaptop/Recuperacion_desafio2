@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpo - Pruebas</title>
+</head>
+
+<body class="bg-image" style="background-image:url(../assets/img/fondo.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-1">
+                <div class="row" id="cabecera">
+                    <div class="col-2">
+                        <img id="logo" src="/src/assets/img/logo.png" width="100" height="100">
+                    </div>
+                    <div class="col-8">
+                        <h1 class="p-4">Olimpo - Pruebas</h1>
+                    </div>
+                    <div class="col-1">
+                        <div class="botonPerfil pt-3">
+                            <button class="btnCabecera" id="botonPerfil">Perfil</button>
+                        </div>
+                        <div class="botonLogout pt-3">
+                            <button class="btnCabecera" id="botonLogout">Logout</button>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="dropdown">
+                            <img src="/src/assets/img/Afrodita.png" class="pt-1" alt="Avatar de usuario" width="80"
+                                height="120">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="subcabecera" class="row">
+            <div class="col-8 p-3 border-bottom">
+                <div class="migas">
+                    <ul class="breadcrumb">
+                        <li><a href="/index.html">Inicio</a></li>
+                        <li><a href="IndexPersonaje.html">Panel de Gestión</a></li>
+                        <li>Pruebas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4 p-3 border-bottom">
+                <div class="row">
+                    <div class="col-6" id="personajeRol"></div>
+                    <div class="col-6"><button class="btn" id="guia" data-bs-toggle="modal"
+                            data-bs-target="#modalGuia">Guía</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-4">
+                <h3><u>Pruebas</u></h3>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col" id="alert"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="tabla"></div>
+    <div class="container">
+        <div class="row inferior">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <footer class="inferior py-3 my-3">
+                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                        <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Inicio</a></li>
+                        <li class="nav-item"><a href="./Ayuda.html" class="nav-link px-2 text-muted">Ayuda</a>
+                        </li>
+                        <li class="nav-item"><a href="./acercaDe.html" class="nav-link px-2 text-muted">Acerca de
+                                nosotros</a></li>
+                        <li class="nav-item"><a href="./Contacto.html" class="nav-link px-2 text-muted">Contacto</a>
+                        </li>
+                    </ul>
+                    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+                </footer>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalResolver" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Resolver Pregunta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formResolver">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="pb-3" for="pregunta">Pregunta:</label>
+                                    <textarea class="form-control" id="textarea" name="textarea" required
+                                        disabled></textarea>
+                                </div>
+                                <div class="row pt-4 pb-2">
+                                    <label class="col-5" for="pregunta">Respuesta:</label>
+                                    <div class="col-7">
+                                        <label class="m-1" for="valor">Primera opción</label>
+                                        <input type="radio" class="m-1" value="primera" name="valor">
+                                        <label class="m-1" for="valor">Segunda opción</label>
+                                        <input type="radio" class="m-1" value="segunda" name="valor">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="resolverPrueba" class="btn btn-primary"
+                        data-bs-dismiss="modal">Resolver</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="modalGuia" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalGuia">
+                <div class="modal-header">
+                    <h5 class="modal-title">Guía rápida</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bienvenid@, si has acabado aquí te estarás preguntando lo siguiente: ¿Qué tengo que hacer
+                        ahora? o ¿Qué hace cada apartado?<br>En primer lugar dependiendo de tu personaje en el
+                        olimpo tendrás diferentes opciones,podrás
+                        ver que personaje eres al lado de este botón<br>-Si tu personaje es un humano podrás resolver
+                        las pruebas que te hayan asignado los dioses pulsando en el botón de resolver que veras en cada
+                        una de las filas de la tabla así como filtrar tus pruebas por realizadas o no.<br>
+                        -Si tu personaje es un dios o hades tienes la
+                        opcion de crear diferentes tipos de pruebas las cuales una vez creadas se añaden a la tabla, por
+                        otra parte en cada una de las filas podras ver un botón de modificar que te permite cambiar
+                        algún parametro de la prueba, un boton de asignar el cual te asociar esa prueba con un humano o
+                        varios los cuales no la tengan,
+                        o si lo prefieres puedes asignar dicha prueba a todos los humanos y por último podras eliminar
+                        dicha prueba.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn transition" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
