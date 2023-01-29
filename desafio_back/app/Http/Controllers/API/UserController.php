@@ -185,10 +185,10 @@ class UserController extends Controller
         $usuario = Humano::with(['usuarios'])->where('estado', 'vivo')->get();
         $datos = [];
         foreach ($usuario as $u) {
-
-            $atributos = atributos_asignado::where($u->id)->get();
+            $atributos = atributos_asignado::where('idU', $u['usuarios']->id)->get();
             $diosAfin = User::where('id', $u->idD)->get('nombre');
             $rol = Rol::where('id', $u['usuarios']['idR'])->get('nombre');
+
             $data = [
                 "id" => $u->idU,
                 "nombre" => $u['usuarios']['nombre'],
@@ -203,8 +203,9 @@ class UserController extends Controller
                 "destino" => $u->destino,
                 "estado" => $u->estado
             ];
-            $datos[]=$data;
+            $datos[] = $data;
         }
+
 
         return response()->json(["sucess" => true, "data" => $datos, "message" => "Enviada info"], 200);
     }
@@ -213,8 +214,7 @@ class UserController extends Controller
         $usuario = Humano::with(['usuarios'])->where('estado', 'Tartaro')->get();
         $datos = [];
         foreach ($usuario as $u) {
-
-            $atributos = atributos_asignado::where($u->id)->get();
+            $atributos = atributos_asignado::where("idU",$u['usuarios']->id)->get();
             $diosAfin = User::where('id', $u->idD)->get('nombre');
             $rol = Rol::where('id', $u['usuarios']['idR'])->get('nombre');
             $data = [
@@ -231,7 +231,7 @@ class UserController extends Controller
                 "destino" => $u->destino,
                 "estado" => $u->estado
             ];
-            $datos[]=$data;
+            $datos[] = $data;
         }
         return response()->json(["sucess" => true, "data" => $datos, "message" => "Enviada info"], 200);
     }

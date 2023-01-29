@@ -55,13 +55,13 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container area mt-3 pb-3">
         <div class="row">
-            <div class="col-12 p-4">
+            <div class="col-12 p-4 text-center">
                 <h3>Creación de pruebas</h3>
             </div>
         </div>
-        <div class="row">
+        <div class="row ">
             <div class="col-3">
                 <button id="eleccion" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#modalPrueba">Añadir
@@ -86,26 +86,36 @@
     </div>
     <div class="container mb-5 mt-5" id="respModal"></div>
     <div class="container" id="tabla"></div>
-    <div class="container">
-        <div class="row inferior">
-            <div class="col-1"></div>
-            <div class="col-10">
-                <footer class="inferior py-3 my-3">
-                    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                        <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Inicio</a></li>
-                        <li class="nav-item"><a href="./Ayuda.html" class="nav-link px-2 text-muted">Ayuda</a>
+    <div class="row mt-5 inferior">
+        <div class="col-1"></div>
+        <div class="col" id="footer">
+            <footer class="py-3 my-3">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="../index.html" class="nav-link px-2">Inicio</a></li>
+                    <li class="nav-item"><a href="./Ayuda.html" class="nav-link px-2">Ayuda</a></li>
+                    <li class="nav-item"><a href="./acercaDe.html" class="nav-link px-2">Acerca de
+                            nosotros</a></li>
+                    <li class="nav-item"><a href="./Contacto.html" class="nav-link px-2">Contacto</a></li>
+
+                </ul>
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                        <span>&copy; 2022 Company, Inc</span>
+                    </div>
+                    <ul class="nav col-6 d-flex justify-content-end list-unstyled">
+                        <li class="ms-3"><img class="icono rrss" src="/assets/img/whatsapp_logo_thin.svg"
+                                alt="whatsapp"></li>
+                        <li class="ms-3"> <img class="icono rrss" src="/assets/img/twitter_logo_thin.svg" alt="twitter">
                         </li>
-                        <li class="nav-item"><a href="./acercaDe.html" class="nav-link px-2 text-muted">Acerca de
-                                nosotros</a></li>
-                        <li class="nav-item"><a href="./Contacto.html" class="nav-link px-2 text-muted">Contacto</a>
-                        </li>
+                        <li class="ms-3"><img class="icono rrss" src="/assets/img/linkedin_logo_thin.svg"
+                                alt="linkedin"></li>
                     </ul>
-                    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
-                </footer>
-                <div class="col-1"></div>
-            </div>
+                </div>
+            </footer>
         </div>
+        <div class="col-1"></div>
     </div>
+
 
     <div class="modal" id="modalPrueba" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -116,38 +126,64 @@
                 </div>
                 <div class="modal-body">
                     <form id="formPrueba" novalidate>
-                        <label class="pb-2" for="descripcion">Pregunta:</label>
-                        <textarea class="form-control m-1" id="descripcion" placeholder="Escribe tu pregunta o prueba"
-                            name="descripcion" required></textarea>
-                        <label class="pt-2 pb-2" for="destino">Destino:</label>
-                        <input required type="number" max="100" min="1" class="form-control col-3 m-1" name="destino"
-                            placeholder="De 1 a 100" id="destino">
-                        <label class="pt-2 pb-2 atributo desaparecer">Atributo:</label>
-                        <input type="text" class="form-control col-3 m-1 desaparecer" id="atributo" name="atributo"
-                            pattern="[sabiduria,astucia,maldad,virtud,nobleza]+" placeholder="Ejemplo: nobleza">
-                        <label class="pt-2 pb-2 dificultad desaparecer">Dificultad:</label>
-                        <input type="number" max="100" min="1" class="form-control col-3 m-1 desaparecer"
-                            name="dificultad" id="dificultad" placeholder="De 1 a 100">
-                        <label class="pt-2 pb-2 desaparecer valorA">Valor de la respuesta:</label>
-                        <input type="number" max="1" min="0" class="form-control col-3 m-1 desaparecer" name="valorA"
-                            id="valorA" placeholder="De 0 a 1">
-                        <label class="pt-2 pb-2 palabras desaparecer">Palabras clave:</label>
-                        <textarea class="form-control col-12 m-1 desaparecer" placeholder="Escribe las palabras clave"
-                            name="palabras" id="palabras"></textarea>
-                        <label class="pt-2 pb-2 acierto desaparecer">Porcentaje de acierto:</label>
-                        <input type="number" max="100" min="0" class="form-control col-3 m-1 desaparecer" name="acierto"
-                            id="porcentaje" placeholder="De 0 a 100">
-                        <button type="button" class="btn mt-3 w-100 save">Aceptar</button>
-                        <button type="button" class="btn mt-3 w-100 aparecer guardar">Guardar</button>
-                        <button type="button" class="btn mt-3 w-100 cerrar" data-bs-dismiss="modal">Cerrar</button>
-                        <div class="mt-4 mb-3" id="respuestaModal"></div>
-
+                        <div class="container">
+                            <div class="row">
+                                <label class="pb-2" for="descripcion">Pregunta:</label>
+                                <textarea class="form-control m-1" id="descripcion"
+                                    placeholder="Escribe tu pregunta o prueba" name="descripcion" minlength="5"
+                                    required></textarea>
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <div class="row">
+                                <label class="pt-2 pb-2" for="destino">Destino:</label>
+                                <input required type="number" max="100" min="1" class="form-control col-3 m-1"
+                                    name="destino" placeholder="De 1 a 100" id="destino">
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <div class="row">
+                                <label
+                                    class="pt-2 pb-2 atributo desaparecer">Atributo:(sabiduria,nobleza,maldad,astucia,virtud)</label>
+                                <input type="text" class="form-control col-3 m-1 desaparecer" id="atributo"
+                                    name="atributo" pattern="(sabiduria|astucia|maldad|virtud|nobleza)"
+                                    placeholder="Ejemplo: nobleza">
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <div class="row">
+                                <label class="pt-2 pb-2 dificultad desaparecer">Dificultad:</label>
+                                <input type="number" max="100" min="1" class="form-control col-3 m-1 desaparecer"
+                                    name="dificultad" id="dificultad" placeholder="De 1 a 100">
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <div class="row">
+                                <label class="pt-2 pb-2 desaparecer valorA">Valor de la respuesta:</label>
+                                <input type="number" max="1" min="0" class="form-control col-3 m-1 desaparecer"
+                                    name="valorA" id="valorA" placeholder="De 0 a 1">
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <div class="row">
+                                <label class="pt-2 pb-2 palabras desaparecer">Palabras clave:</label>
+                                <textarea class="form-control col-12 m-1 desaparecer"
+                                    placeholder="Escribe las palabras clave" name="palabras" id="palabras"
+                                    minlength="3"></textarea>
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <div class="row">
+                                <label class="pt-2 pb-2 acierto desaparecer">Porcentaje de acierto:</label>
+                                <input type="number" max="100" min="0" class="form-control col-3 m-1 desaparecer"
+                                    name="acierto" id="porcentaje" placeholder="De 0 a 100">
+                                <span class="error" aria-live="polite"></span>
+                            </div>
+                            <button type="button" class="btn mt-3 w-100 save">Aceptar</button>
+                            <button type="button" class="btn mt-3 w-100 aparecer guardar">Guardar</button>
+                            <button type="button" class="btn mt-3 w-100 cerrar" data-bs-dismiss="modal">Cerrar</button>
+                            <div class="mt-4 mb-3" id="respuestaModal"></div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="modal" id="modalGuia" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modalGuia">
@@ -180,7 +216,7 @@
 
 
     <div class="modal" id="modalAsignacion" tabindex="-1">
-        <div class="modal-dialog  modal-fullscreen">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content modalGuia">
                 <div class="modal-header">
                     <h5 class="modal-title">Asignación de pruebas</h5>
@@ -192,7 +228,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn mt-3 w-100 btn-primary Asignar ">Asignar</button>
-                    <button type="button" class="btn mt-3 w-100 btn-danger cierre" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn mt-3 w-100 btn-danger cierre"
+                        data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

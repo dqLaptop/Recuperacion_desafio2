@@ -7,6 +7,7 @@ import { obtenerUsuario } from './crud-provider';
 let tBody;
 let tb;
 let idAsignar = "";
+const spanError = document.querySelectorAll("span.error")
 const atributo = document.querySelector('#atributo');
 const valorA = document.querySelector('#valorA');
 const labelAtributo = document.querySelector('.atributo');
@@ -459,8 +460,150 @@ cerrar.forEach(c => c.addEventListener('click', function () {
     labelValorA.classList.add('desaparecer');
     valorA.classList.remove('aparecer');
     valorA.classList.add('desaparecer');
+    limpiarError();
 
 }));
+document.querySelector('#descripcion').addEventListener('input', () => {
+    if (document.querySelector('#descripcion').validity.valid) {
+        spanError[0].innerHTML = '';
+        spanError[0].className = 'error';
+    } else {
+        showErrorDescripcion();
+    }
+});
+document.querySelector('#destino').addEventListener('input', () => {
+    if (document.querySelector('#descripcion').validity.valid) {
+        spanError[1].innerHTML = '';
+        spanError[1].className = 'error';
+    } else {
+        showErrorDestino();
+    }
+});
+atributo.addEventListener('input', () => {
+    if (document.querySelector('#descripcion').validity.valid) {
+        spanError[2].innerHTML = '';
+        spanError[2].className = 'error';
+    } else {
+        showErrorAtributos();
+    }
+});
+dificultad.addEventListener('input', () => {
+    if (document.querySelector('#descripcion').validity.valid) {
+        spanError[3].innerHTML = '';
+        spanError[3].className = 'error';
+    } else {
+        showErrorDificultad();
+    }
+});
+valorA.addEventListener('input', () => {
+    if (document.querySelector('#descripcion').validity.valid) {
+        spanError[4].innerHTML = '';
+        spanError[4].className = 'error';
+    } else {
+        showErrorValor();
+    }
+});
+palabras.addEventListener('input', () => {
+    if (document.querySelector('#descripcion').validity.valid) {
+        spanError[5].innerHTML = '';
+        spanError[5].className = 'error';
+    } else {
+        showErrorPalabras();
+    }
+});
+acierto.addEventListener('input', () => {
+    if (document.querySelector('#descripcion').validity.valid) {
+        spanError[6].innerHTML = '';
+        spanError[6].className = 'error';
+    } else {
+        showErrorAcierto();
+    }
+});
+const showErrorDescripcion = () => {
+    if (document.querySelector('#descripcion').validity.valueMissing) {
+        spanError[0].textContent = 'Escribe una pregunta para el humano';
+    } else {
+        if (document.querySelector('#descripcion').validity.tooShort) {
+            spanError[0].textContent = `La pregunta debe tener como minimo 5 caracteres.`
+        }
+    }
+    spanError[0].className = 'error';
+}
+const showErrorDestino = () => {
+    if (document.querySelector("#destino").validity.valueMissing) {
+        spanError[1].textContent = 'Debe introducir un número.';
+    } else if (document.querySelector("#destino").validity.rangeOverflow) {
+        spanError[1].textContent = 'El valor maximo es de 100.'
+    } else if (document.querySelector("#destino").validity.rangeUnderflow) {
+        spanError[1].textContent = 'El valor minimo es de 1.'
+    }else{
+        spanError[1].textContent ="";
+    }
+
+    spanError[1].className = 'error';
+}
+const showErrorAtributos = () => {
+    if (atributo.validity.patternMismatch) {
+        spanError[2].textContent = 'Los atributos permitidos son virtud, maldad, astucia, sabiduria, nobleza';
+    } else {
+        spanError[2].textContent = '';
+    }
+    spanError[2].className = 'error';
+}
+const showErrorValor = () => {
+    if (valorA.validity.valueMissing) {
+        spanError[4].textContent = 'Debe introducir un número.';
+    } else if (valorA.validity.rangeOverflow) {
+        spanError[4].textContent = 'El valor maximo es de 1.'
+    } else if (valorA.validity.rangeUnderflow) {
+        spanError[4].textContent = 'El valor minimo es de 0.'
+    }else{
+        spanError[4].textContent = '';
+    }
+    spanError[4].className = 'error';
+}
+const showErrorPalabras = () => {
+    if (palabras.validity.valueMissing) {
+        spanError[5].textContent = 'Escribe una posible respuesta para el humano';
+    } else {
+        if (palabras.validity.tooShort) {
+            spanError[5].textContent = `La pregunta debe tener como minimo 3 caracteres.`
+        } else {
+            spanError[5].textContent = "";
+        }
+    }
+    spanError[5].className = 'error';
+}
+const showErrorDificultad = () => {
+    if (dificultad.validity.valueMissing) {
+        spanError[3].textContent = 'Debe introducir un número.';
+    } else if (dificultad.validity.rangeOverflow) {
+        spanError[3].textContent = 'El valor maximo es de 100.'
+    } else if (dificultad.validity.rangeUnderflow) {
+        spanError[3].textContent = 'El valor minimo es de 1.'
+    }else{
+        spanError[3].textContent = ''
+    }
+    spanError[3].className = 'error';
+}
+const showErrorAcierto = () => {
+    if (acierto.validity.valueMissing) {
+        spanError[6].textContent = 'Debe introducir un número.';
+    } else if (acierto.validity.rangeOverflow) {
+        spanError[6].textContent = 'El valor maximo es de 100.'
+    } else if (acierto.validity.rangeUnderflow) {
+        spanError[6].textContent = 'El valor minimo es de 0.'
+    }else{
+        spanError[6].textContent ="";
+    }
+
+    spanError[1].className = 'error';
+}
+const limpiarError = () => {
+    for (let index = 0; index < spanError.length; index++) {
+        spanError[index].textContent = "";
+    }
+}
 
 init();
 

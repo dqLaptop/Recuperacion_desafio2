@@ -48,7 +48,7 @@ class pruebaEleccionController extends Controller
                 $destinoTotal = $h['destino'] - $destino;
                 if ($destinoTotal < 0) {
                     $h->estado = "Tartaro";
-                    $h->destino = $destinoTotal;
+                    $h->destino = 0;
                     $this->modificarRespuesta($input['idU'], $input['idP'], $input['valor']);
                     $h->save();
                     return response()->json(["sucess" => true, "message" => "Lo siento pero has muerto y has ido al Tartaro"], 200);

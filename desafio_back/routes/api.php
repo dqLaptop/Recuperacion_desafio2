@@ -19,7 +19,6 @@ Route::post('login', [AuthController::class, 'login']); //Manuel
 Route::post('logout', [AuthController::class, 'logout']); //Manuel
 Route::post('register', [AuthController::class, 'register']); //Isabel;
 Route::get('modificar/{id}', [UserController::class, 'mofidificarVerificacion']); //Isabel;
-
 //Middlewares y auth:sanctum ---> Manuel
 // Route::group(['middleware' => ['cors']], function ()  --->>>Añadir el middleware de cors, si hubiera problemas de ese tipo
 Route::controller(UserController::class)->middleware(['auth:sanctum'])->prefix('Usuario')->group(function () { //Manuel

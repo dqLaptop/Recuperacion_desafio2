@@ -19,6 +19,7 @@ const mensaje = document.querySelector("#mensaje");
 const cerrar = document.querySelectorAll(".cerrar");
 const emailR = document.querySelectorAll(".emailR");
 const divEleccionEmail = document.querySelector("#eleccionEmail");
+const spanError=document.querySelectorAll(".invalid-feedback");
 
 const crearTabla = () => {
     const html = `
@@ -204,6 +205,40 @@ emailR.forEach(email => email.addEventListener('input', () => {
         showError();
     }
 }));
+mensaje.addEventListener('input', () => {
+    if (mensaje.validity.valid) {
+        spanError[1].innerHTML = '';
+        spanError[1].className = 'error';
+    } else {
+        showErrorMensaje();
+    }
+});
+
+document.querySelector('#motivo').addEventListener('input', () => {
+    if (document.querySelector('#motivo').validity.valid) {
+        spanError[0].innerHTML = '';
+        spanError[0].className = 'error';
+    } else {
+        showErrorAsunto();
+    }
+});
+const showErrorAsunto = () => {
+    if (document.querySelector('#motivo').validity.valueMissing) {
+        spanError[0].textContent = 'Introduce un motivo para tu mensaje';
+    } else {
+        spanError[0].textContent = "";
+    }
+    spanError[0].className = 'error';
+}
+
+const showErrorMensaje = () => {
+    if (mensaje.validity.valueMissing) {
+        spanError[1].textContent = 'Introduce un mensaje';
+    } else {
+        spanError[1].textContent = "";
+    }
+    spanError[1].className = 'error';
+}
 const showError = () => {
     let emailError = document.querySelectorAll('span.error');
     for (let index = 0; index < emailR.length; index++) {
@@ -215,6 +250,7 @@ const showError = () => {
         emailError[index].className = 'error';
     }
 }
+
 enviar.addEventListener('click', (e) => {
     const data = new FormData(document.getElementById('formHermes'));
     let comentario = new Comentario(datos.id_usuario, data.getAll('emailR'), data.get('asunto'), data.get('mensaje'));

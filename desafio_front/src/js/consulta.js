@@ -13,6 +13,7 @@ let spanError = document.querySelector("span.error");
 let cerrar = document.querySelectorAll(".cerrar");
 let filtro = document.querySelector("#usuariosOlimpo");
 let idUsuario = "";
+const spanErrorAtr=document.querySelectorAll(".invalid-feedback");
 
 const obtenerRol = async (u) => {
     let divRol = document.querySelector("#personajeRol");
@@ -251,6 +252,8 @@ const showErrorInputNumber = () => {
         spanError.textContent = 'El valor maximo es de 100.'
     } else if (document.querySelector("#inputHM").validity.rangeUnderflow) {
         spanError.textContent = 'El valor minimo es de 1.'
+    } else {
+        spanError.textContent = "";
     }
     spanError.className = 'error';
 }
@@ -295,6 +298,7 @@ document.querySelector("#addDios").addEventListener('click', async (e) => {
 });
 cerrar.forEach(c => c.addEventListener('click', function () {
     document.querySelector("#inputHM").value = "";
+    limpiarError();
 }))
 const crearAlert = (cad) => {
     const html = `
@@ -342,3 +346,114 @@ filtro.addEventListener('change', async () => {
             crearFilaDios(u));
     }
 });
+document.querySelector('#sabiduriaMod').addEventListener('input', () => {
+    if (document.querySelector('#sabiduriaMod').validity.valid) {
+        spanErrorAtr[0].innerHTML = '';
+        spanErrorAtr[0].className = 'error';
+    } else {
+        showErrorAtrS();
+    }
+});
+document.querySelector('#noblezaMod').addEventListener('input', () => {
+    if (document.querySelector('#noblezaMod').validity.valid) {
+        spanErrorAtr[1].innerHTML = '';
+        spanErrorAtr[1].className = 'error';
+    } else {
+        showErrorAtrN();
+    }
+});
+document.querySelector('#virtudMod').addEventListener('input', () => {
+    if (document.querySelector('#virtudMod').validity.valid) {
+        spanErrorAtr[2].innerHTML = '';
+        spanErrorAtr[2].className = 'error';
+    } else {
+        showErrorAtrV();
+    }
+});
+document.querySelector('#maldadMod').addEventListener('input', () => {
+    if (document.querySelector('#maldadMod').validity.valid) {
+        spanErrorAtr[3].innerHTML = '';
+        spanErrorAtr[3].className = 'error';
+    } else {
+        showErrorAtrM();
+    }
+});
+document.querySelector('#astuciaMod').addEventListener('input', () => {
+    if (document.querySelector('#astuciaMod').validity.valid) {
+        spanErrorAtr[4].innerHTML = '';
+        spanErrorAtr[4].className = 'error';
+    } else {
+        showErrorAtrA();
+    }
+});
+
+const showErrorAtrA= () => {
+    if (document.querySelector('#astuciaMod').validity.valueMissing) {
+        spanErrorAtr[4].textContent = 'Debe introducir un número.';
+    } else if (document.querySelector('#astuciaMod').validity.rangeOverflow) {
+        spanErrorAtr[4].textContent = 'El valor maximo es de 5.'
+    } else if (document.querySelector("#astuciaMod").validity.rangeUnderflow) {
+        spanErrorAtr[4].textContent = 'El valor minimo es de 1.'
+    } else {
+        spanErrorAtr[4].textContent = "";
+    }
+
+    spanErrorAtr[4].className = 'error';
+}
+const showErrorAtrM = () => {
+    if (document.querySelector('#maldadMod').validity.valueMissing) {
+        spanErrorAtr[3].textContent = 'Debe introducir un número.';
+    } else if (document.querySelector('#maldadMod').validity.rangeOverflow) {
+        spanErrorAtr[3].textContent = 'El valor maximo es de 5.'
+    } else if (document.querySelector("#maldadMod").validity.rangeUnderflow) {
+        spanErrorAtr[3].textContent = 'El valor minimo es de 1.'
+    } else {
+        spanErrorAtr[3].textContent = "";
+    }
+
+    spanErrorAtr[3].className = 'error';
+}
+const showErrorAtrN = () => {
+    if (document.querySelector('#nobleza').validity.valueMissing) {
+        spanErrorAtr[1].textContent = 'Debe introducir un número.';
+    } else if (document.querySelector('#noblezaMod').validity.rangeOverflow) {
+        spanErrorAtr[1].textContent = 'El valor maximo es de 5.'
+    } else if (document.querySelector("#noblezaMod").validity.rangeUnderflow) {
+        spanErrorAtr[1].textContent = 'El valor minimo es de 1.'
+    } else {
+        spanErrorAtr[1].textContent = "";
+    }
+
+    spanErrorAtr[1].className = 'error';
+}
+const showErrorAtrS = () => {
+    if (document.querySelector('#sabiduriaMod').validity.valueMissing) {
+        spanErrorAtr[0].textContent = 'Debe introducir un número.';
+    } else if (document.querySelector('#sabiduriaMod').validity.rangeOverflow) {
+        spanErrorAtr[0].textContent = 'El valor maximo es de 5.'
+    } else if (document.querySelector("#sabiduriaMod").validity.rangeUnderflow) {
+        spanErrorAtr[0].textContent = 'El valor minimo es de 1.'
+    } else {
+        spanErrorAtr[0].textContent = "";
+    }
+
+    spanErrorAtr[0].className = 'error';
+}
+const showErrorAtrV = () => {
+    if (document.querySelector('#virtudMod').validity.valueMissing) {
+        spanErrorAtr[2].textContent = 'Debe introducir un número.';
+    } else if (document.querySelector('#virtudMod').validity.rangeOverflow) {
+        spanErrorAtr[2].textContent = 'El valor maximo es de 5.'
+    } else if (document.querySelector("#virtudMod").validity.rangeUnderflow) {
+        spanErrorAtr[2].textContent = 'El valor minimo es de 1.'
+    } else {
+        spanErrorAtr[2].textContent = "";
+    }
+
+    spanErrorAtr[2].className = 'error';
+}
+const limpiarError = () => {
+    for (let index = 0; index < spanError.length; index++) {
+        spanError[index].textContent = "";
+    }
+}
