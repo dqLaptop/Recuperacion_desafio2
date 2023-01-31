@@ -85,8 +85,8 @@ class ComentarioController extends Controller
                 'emailR' => $usuarioR['email']
             ];
             $c[] = $data;
-            return response()->json($c, 200);
         }
+        return response()->json($c, 200);
     }
     public function indexNoLeidos($idU)
     {
@@ -102,8 +102,8 @@ class ComentarioController extends Controller
                 'emailR' => $usuarioR['email']
             ];
             $c[] = $data;
-            return response()->json($c, 200);
         }
+        return response()->json($c, 200);
     }
     public function destroy($cod)
     {
@@ -158,18 +158,17 @@ class ComentarioController extends Controller
     public function modificarNoLeido(Request $req)
     {
         $c = $req->all();
-        $comentario=Comentario::find($c['id']);
-        if(is_null($comentario)){
+        $comentario = Comentario::find($c['id']);
+        if (is_null($comentario)) {
             return response()->json(["sucess" => false, "message" => "No se ha encontrado el comentario"], 203);
-        }else{
-            $comentario->leido=true;
-            try{
+        } else {
+            $comentario->leido = true;
+            try {
                 $comentario->save();
                 return response()->json(["sucess" => true, "message" => "Se ha modificado correctamente"], 200);
-            }catch(\Exception $e){
+            } catch (\Exception $e) {
                 return response()->json(["sucess" => false, "message" => "No se ha podido modificar"], 203);
             }
-
         }
     }
 }
